@@ -1,0 +1,13 @@
+<div class="quiz-wrap word">
+  <div class="word-wrap">
+    <span>{{this._question.question.word}}</span>
+  </div>
+</div>
+<div class="clearfix"></div>
+<div class="quiz-footer">
+  <div class="quiz-text">Do you know meaning of this word?</div>
+  <div class="quiz-buttons">
+    <button class="btn small" (click)="onAnswered('true')">Yes</button>
+    <button class="btn small" (click)="onAnswered('false')">No</button>
+  </div>
+</div>

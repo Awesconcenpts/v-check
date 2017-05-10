@@ -1,0 +1,116 @@
+<div [ngClass]="[this._isLoaded]" class="container main">
+  <div>
+    <div class="app-box text-center">
+      <div class="component-wraper">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 adjust-space quiz-section" [ngClass]="[this._isQuizActive]">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"><img src="assets/images/logo-small.png" /></div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopadding">
+            <div class="progress-wraper">
+              <div class="start"> <span >Start</span> </div>
+              <div class="pregress">
+                <div class="progress-border">
+                  <div class="progress-bar" [style.width]="[this._progress]"></div>
+                </div>
+              </div>
+              <div class="end"> <span>End</span> </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"><span class="timeleft" [ngClass]="[this._timeColor]">Time Left: <strong>{{this._countDownFront}}</strong></span></div>
+          <div class="clearfix"></div>
+          <div class="quiz-wraper">
+            <template  #host></template>
+          </div>
+        </div>
+        <!-- wellcome -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 adjust-space quiz-start"  [ngClass]="[this._isStartActive]">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"></div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopadding">
+            <img src="assets/images/logo-large.png" class="quiz-start-logo" />
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"></div>
+          <div class="clearfix"></div>
+          <div class="quiz-start-wraper">
+            <div class="quiz-start-wrap choice">
+				<div class="quiz-start-info line1">How many words do you know?</div>
+				<div class="quiz-start-info line2">What is my vocabulary score in terms of TOEIC and TOEFL?</div>
+				<div class="quiz-start-info line3">Click "Yes" if you know the meaning of the word presented?</div>
+				<div class="quiz-start-info line4">Your result will affect your study course, so please answer accurately!</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="quiz-start-footer">
+			  <div class="quiz-buttons">
+				<button class="btn start" (click)="onStart()">Start V-Check</button>
+			  </div>
+			</div>
+          </div>
+        </div>
+        <!-- end wellcome -->
+        <!-- popup -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 popup"  [ngClass]="[this._isPopupActive]">
+         <div class="center-popup">
+          <div class="popup-wraper">
+            <div class="popup-content-wrap">
+				<div class="content" [innerHTML]="this._isPopupContent"></div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="popup-footer">
+			  <div class="popup-buttons">
+				<button class="btn_popup" (click)="onContinue()">Continue</button>
+			  </div>
+			</div>
+          </div>
+          </div>
+        </div>
+        <!-- end popup -->
+        <!-- result -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 adjust-space quiz-result"  [ngClass]="[this._isResultActive]">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"></div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopadding"><img src="assets/images/logo-large.png" class="quiz-error-logo" />
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"></div>
+          <div class="clearfix"></div>
+          <div class="quiz-result-wraper">
+            <div class="quiz-result-wrap">
+				<div class="quiz-result-info line1">V-Check free words completed!</div>
+				<div class="quiz-result-info line2">You should register in the website to check other words.</div>
+				<div class="quiz-result-info line3">More than 5000 words are available in our system.</div>
+				<div class="quiz-result-info line4">Study from any corner of the world.</div>
+				<div class="quiz-result-info line5">Do you want to register now?</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="quiz-result-footer">
+			  <div class="quiz-buttons">
+				<button class="btn result" (click)="onRegistered()">Register now</button>
+			  </div>
+			</div>
+          </div>
+        </div>
+        <!-- end result -->
+        <!-- Error -->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 adjust-space quiz-error"  [ngClass]="[this._isErrorActive]">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"><img src="assets/images/logo-small.png" class="quiz-error-logo" /></div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nopadding">
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding"></div>
+          <div class="clearfix"></div>
+          <div class="quiz-error-wraper">
+            <div class="quiz-error-wrap">
+				<div class="quiz-error-info line1"><i class="fa fa-info-circle" aria-hidden="true"></i> V-Check test stopped <i class="fa fa-info-circle" aria-hidden="true"></i></div>
+				<div class="quiz-error-info line2">Possible reasons include:</div>
+				<div class="quiz-error-info line3">*You answered 'Yes' to too many false words</div>
+				<div class="quiz-error-info line4">*We were unable to characterise your response patterns</div>
+				<div class="quiz-error-info line5">Do you want to try again now?</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="quiz-error-footer">
+			  <div class="quiz-buttons">
+				<button class="btn error" (click)="onResultContinue()">Restart V-Check</button>
+			  </div>
+			</div>
+          </div>
+        </div>
+        <!-- end Error -->
+      </div>
+    </div>
+  </div>
+</div>

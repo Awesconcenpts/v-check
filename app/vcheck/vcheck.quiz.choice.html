@@ -1,0 +1,10 @@
+<div class="quiz-wrap choice">
+ <span>{{this._question.question.word}}</span>
+</div>
+<div class="quiz-option-wraper">
+    <div class="quiz-text">Choose the most suitable definition:</div>
+    <div class="quiz-option" *ngFor=" let q of this._question.question.options; let i = index;">
+      <a (click)="onOptionChoosed(q.seq)"><i [ngClass]="[this._result[i].class]"></i>{{q.value}}</a>
+    </div>
+</div>
+

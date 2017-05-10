@@ -1,0 +1,200 @@
+body{
+	min-height: 400px;
+	min-width: 640px;
+	overflow: hidden;
+}
+.loader {
+	border: 5px solid #f3f3f3;
+	-webkit-animation: spin 1s linear infinite,fadein 0.5s linear;
+	animation: spin 1s linear infinite,fadein 0.5s linear;
+	border-top: 5px solid #555;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: calc(50% - 25px);
+	top: calc(50% - 25px);
+	opacity: 1;
+	z-index: 0;
+	-webkit-transition: all 0.8s ease-in-out,-webkit-opacity 0.3s ease-in-out;
+      -moz-transition: all 0.8s ease-in-out,-moz-opacity 0.3s ease-in-out;
+      -o-transition: all 0.8s ease-in-out,-o-opacity 0.3s ease-in-out;
+      transition: all 0.8s ease-in-out,opacity 0.3s ease-in-out;
+}
+@-webkit-keyframes fadein {
+ 0% { opacity: 0; }
+ 100% { opacity: 1; }
+}
+@keyframes fadein {
+ 0% { opacity: 0; }
+ 100% { opacity: 1; }
+}
+@-webkit-keyframes spin {
+ 0% { -webkit-transform: rotate(0deg); }
+ 100% { -webkit-transform: rotate(360deg); }
+}
+ @keyframes spin {
+ 0% { transform: rotate(0deg); }
+ 100% { transform: rotate(360deg); }
+}
+.main, body, html {
+	height: 100%;
+	font-family:sans-serif;
+}
+button:focus,a:focus,:focus,:active{
+  	border: 0;
+	outline: none;
+}
+button::-moz-focus-inner {
+  	border: 0;
+}
+/* display in center */
+.main {
+	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	min-height: 100vh; /* These two lines are counted as one :-)       */
+	display: flex;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+	opacity: 0;
+	-webkit-transform: scale(0.7);
+	-moz-transform: scale(0.7);
+	-o-transform: scale(0.7);
+	transform: scale(0.7);
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-backface-visibility: hidden;
+	 
+}
+.main.loaded{
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-backface-visibility: hidden;
+	-webkit-transition: all 0.8s ease-in-out,-webkit-opacity 0.0s ease-in-out;
+      -moz-transition: all 0.8s ease-in-out,-moz-opacity 0.0s ease-in-out;
+      -o-transition: all 0.8s ease-in-out,-o-opacity 0.0s ease-in-out;
+      transition: all 0.8s ease-in-out,opacity 0.0s ease-in-out;
+	opacity:1;
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+	-webkit-transform-origin: center center;
+	-moz-transform-origin: center center;
+	-o-transform-origin: center center;
+	transform-origin: center center;
+}
+.loader.loaded{
+	opacity:0!important;
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	-o-transform: scale(0.5);
+	transform: scale(0.5);
+	-webkit-transform-origin: center center;
+	-moz-transform-origin: center center;
+	-o-transform-origin: center center;
+	transform-origin: center center;
+}
+.nopadding-right{
+	padding-right: 0px!important;
+}
+.nopadding-left{
+	padding-left: 0px!important;
+}
+.nopadding{
+	padding: 0px!important;
+}
+/* reset margin of box */
+.main>div {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* for word and choice */
+host{
+	border: 0px solid #000000;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0px;
+	display: inline-block;
+	text-align: center;
+	-webkit-transform: translate3d(0,0,0);
+	-webkit-backface-visibility: hidden;
+	
+}
+/* End for word and choice */
+/* for word */
+.view.vsible.word {
+	opacity: 0;
+	z-index: 1;
+	-webkit-animation: in-left-word 0.9s ease,fadein-left-word 1.2s ease;
+	animation: in-left-word 0.9s ease,fadein-left-word 1.2s ease; 
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	
+}
+.view.invsible.word {
+	z-index: 0;
+	-webkit-animation: out-right-word 0.9s ease,fadeout-right-word 1.2s ease;
+	animation: out-right-word 0.9s ease,fadeout-right-word 1.2s ease;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+.view.invsible .quiz-footer{
+	opacity: 0;
+	
+}
+.view.vsible .quiz-footer{
+	opacity: 1;
+	
+}
+/* end for word */
+/* for choice */
+.view.vsible.choice {
+	opacity: 0;
+	-webkit-animation: in-left-choice 0.6s cubic-bezier(0.455, 0.030, 0.515, 0.955),fadein-left-choice 0.6s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+	-webkit-animation-delay: 0.0s;
+	animation: in-left-choice 0.6s cubic-bezier(0.455, 0.030, 0.515, 0.955),fadein-left-choice 0.6s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+	animation-delay: 0.0s; 
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+
+}
+.view.invsible.choice { 
+	-webkit-animation: out-right-choice 0.3s cubic-bezier(0.455, 0.030, 0.515, 0.955),fadeout-right-choice 0.3s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+	animation: out-right-choice 0.3s cubic-bezier(0.455, 0.030, 0.515, 0.955),fadeout-right-choice 0.3s cubic-bezier(0.455, 0.030, 0.515, 0.955);
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	
+}
+/* end for choice */
+
+/* For popup */
+.popup .content p{
+	font-size: 14px;
+    padding: 0px 10px 0px 10px;
+    color: #a26f00;
+	font-weight: 600;
+}
+.popup .content h1{
+	margin: 0px;
+	padding: 10px 0px 8px 0px;
+	font-size: 20px;
+    color: #785201;
+    font-weight: 600;
+}
+.popup.red .content p{
+	font-size: 14px;
+    padding: 0px 10px 0px 10px;
+    color: #9a0000;
+	font-weight: 600;
+}
+.popup.red .content h1{
+	margin: 0px;
+	padding: 10px 0px 8px 0px;
+	font-size: 20px;
+    color: #920000;
+    font-weight: 600;
+}
+/* End for popup */
